@@ -6,20 +6,27 @@
   
     <title>ShiftLead </title>
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
     
     <style >
       document {background-color: rgb(132, 132, 245);}
 h1{
   font-family: Verdana;
 }
+h3{
+  font-family: 'trebuchet Ms';
+}
+h5{font-family: 'Courier New', Courier, 'trebuchet Ms';}
+
 p{
-  font-family: monospace;
+  font-family: 'trebuchet Ms';
 }
 td, th {
-  border: 1px solid #dddddd;
+  border: 1px solid rgb(10, 8, 74);
   text-align: left;
   padding: 8px;
 }
+button{padding: 2px;}
 table {
 
 justify-content: center;
@@ -28,7 +35,9 @@ border: 3px solid black;
 width: 300px;
 margin: 0 auto;
 }
-
+label{
+  font-family: 'Courier New', Courier, 'trebuchet Ms'
+}
 button {
   padding: 3px;
   background-color: rgb(255, 255, 255);
@@ -47,52 +56,63 @@ top: 100%;}
   });
   </script>
 </head>
-<body>
+<body style="background-color: powderblue;">
   <h1 id="start" style="text-align: center;"><strong>ShiftLead</strong></h1>
   <h3 style="text-align: center;"> the ideal managment system for:&nbsp; </h3>
-  <h5 style="text-align: center;"> tracking employee's skills, planning proggress, and writing proffesional emails.  </h6>
+  <h5 style="text-align: center;"> tracking employee's skills, planning progress, and writing work emails.  </h6>
   
 <div style="display: flex;
 justify-content: center;
 align-items: center;
-border: 1px solid black;
-width: 400px;
+width: 475px;
 margin: 0 auto;">
 <button id="finder" onclick="dataFind()">Box to DataTable</button>
-<button id="out" onclick="dataOutput()">DataTable To Chart</button>
-<button id="creator" onclick="createRow()">create a row</button>
-<button id="demo" onclick="createColl()">create a collum</button>
+<button id="out" onclick="dataOutput()">DataTable To Box</button>
+<button id="creator" onclick="createRow()"><strong> create </strong> a row</button>
+<button id="remover" onclick="removeRow()"><strong>remove</strong> a row</button>
+<button id="o" onclick="createColl()"><strong>create</strong> a collum</button>
+<button id="d" onclick="removeColl()"><strong>remove</strong> a collum</button>
 
-<button id="demo" onclick="UseDemo()">paste demo set</button>
+<button id="demo" onclick="UseDemo()"> demo set</button>
 </div>
-<table contenteditable="true" id="table" >
-
+<table contenteditable="true" id="table" ><tbody><tr><td></td><td>JobName</td><td>JobName</td><td>JobName</td><td>JobName</td><td>JobName</td></tr></tbody><tbody><tr><td>Name</td><td></td><td></td><td></td><td></td><td></td></tr></tbody><tbody><tr><td>Name</td><td></td><td></td><td></td><td></td><td></td></tr></tbody><tbody><tr><td>Name</td><td></td><td></td><td></td><td></td><td></td></tr></tbody><tbody><tr><td>Name</td><td></td><td></td><td></td><td></td><td></td></tr></tbody><tbody><tr><td>Name</td><td></td><td></td><td></td><td></td><td></td></tr></tbody><tbody><tr><td>Name</td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table>
   <div style="position:absolute;  height: 100px; width: 100px ;
-  top: 55%; left: 15%; border: 1px solid black;"><input type="text" name="data" id="data" style="height: 100px; width: 100px;">
+  top: 55%; left: 15%; border: 1px solid black;"><input  type="text" name="data" id="data" style="height: 100px; width: 100px;">
   <label for="data">save Box, copy this string to save your graph</label></div>
 
 
-  <label style="position: absolute;top: 55%; right: 15%;" for="color coder">functionality</label></div>
+  <label style="position: absolute;top: 55%; right: 12%;" for="color coder">functionality</label></div>
   <div style="position: absolute; justify-content: center; height: 200px; width: 100px ;
   top: 60%; right: 15%;"> 
 
-  <button name="color coder" onclick="ColorCode()">Color code</button>
+  <button name="color coder" style="padding: 5px;" onclick="ColorCode()">Color code</button>
   <!--<button id="Shift organize" onclick="shiftRun()">Highlight best Choice</button>/!-->
-  <button id="quip" onclick="quip()">long Term Ideas</button>
+  <button id="quip" onclick="quip(true)">long Term Ideas</button>
   
-</table>
 <p id="qoute" style="text-align: center;">advice:</p>
-<p id="s" style="text-align: center;">to start, create a few rows and filling out the table from 0-5</p>
-<h2 id="start" style="text-align: center;"><strong>email writer</strong></h1>
-
+<p style="text-align: center;"> </p>
+<p  style="text-align: center;"> </p>
+<ps style="text-align: center;"> </p>
+  
 </div>
 
+<h2 id="start" style="text-align: center;font-family: 'Trebuchet MS';" ><strong>Email Helper</strong></h1>
 
 <form id="post" name="post" method="post">
-  <textarea id="mytextarea">Hello, I would like to say, </textarea>
-</form><label style="top: 150%;" for="post">
-<button  id="ideaGen">Generate an email idea</button></label>
-</body>
+  <textarea id="mytextarea">Writing an email to your superior whenever somthing important comes up, or you have a good idea is a very good way of showing initiative, press the <strong>Generate email idea</strong> button to get started <br>
+  <h4>remember to swap or change any prompts that don't work with your company culture or job situation</h4> </textarea>
+</form>
+<div style="text-align: center;">
+  <button onclick="IdeaGen()" id="ideaGen">Generate email idea</button>
+</div><div style=" width: 50%;
+margin: 0 auto; 
+border: 1px solid black;
+height: 95px;">
+<p id="ideaHolder" style="font-family: 'Trebuchet MS'; font-size: small; ">generated email ideas apear here.</p>
+</div>
+
+<button style= "margin-left: 25% auto; " onclick="deliverHTML()">get html from Tiny</button>
+<div style="border: 1px solid black; left: 0%; width: 25%; "><p id="Deliver">here</p></div>
 <script src="index.js"></script>
 </html>
 
