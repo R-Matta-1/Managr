@@ -1,10 +1,10 @@
-window.addEventListener('DOMContentLoaded', () => {
-    const replaceText = (selector, text) => {
-      const element = document.getElementById(selector)
-      if (element) element.innerText = text
-    }
+
+
+  const { contextBridge, ipcRenderer } = require('electron');
+
+contextBridge.exposeInMainWorld('electron', {
+  // Expose only approved Node.js APIs to the renderer process here
+  // Example:
+  openExternal: (url) => ipcRenderer.invoke('open-external', url),
+});
   
-    for (const type of ['chrome', 'node', 'electron']) {
-      replaceText(`${type}-version`, process.versions[type])
-    }
-  })

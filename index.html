@@ -2,37 +2,100 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>ShiftLead
-
-    </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <title>ShiftLead </title>
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    
     <style >
-      ::backdrop{color: rgb(132, 132, 245);}
+      document {background-color: rgb(132, 132, 245);}
 h1{
   font-family: Verdana;
 }
 p{
   font-family: monospace;
 }
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+table {
 
+justify-content: center;
+align-items: center;
+border: 3px solid black;
+width: 300px;
+margin: 0 auto;
+}
+
+button {
+  padding: 3px;
+  background-color: rgb(255, 255, 255);
+}
+#post{
+  position: absolute;
+
+  right: 25%;
+width: 50%;
+top: 100%;}
     </style>
+  <script src="node_modules\tinymce\tinymce.min.js" referrerpolicy="origin"></script>
+  <script>
+  tinymce.init({
+    selector: '#mytextarea'
+  });
+  </script>
 </head>
 <body>
-  <h1 style="text-align: center;"><strong>Hello, This is ShiftLead</strong></h1>
+  <h1 id="start" style="text-align: center;"><strong>ShiftLead</strong></h1>
   <h3 style="text-align: center;"> the ideal managment system for:&nbsp; </h3>
-  <h6 style="text-align: center;"> tracking employee's skills, organizing breaks, running shift,  and asigning positions  </h6>
-  <h2 style="text-align: center;">whould you like to?</h2>
+  <h5 style="text-align: center;"> tracking employee's skills, planning proggress, and writing proffesional emails.  </h6>
+  
 <div style="display: flex;
 justify-content: center;
 align-items: center;
 border: 1px solid black;
-width: 300px;
+width: 400px;
 margin: 0 auto;">
-<button id="finder" onclick="dataFind()">Find a Database</button>
-<button id="creator" onclick="createData()">Create a new one, or</button>
-<button id="demo" onclick="UseDemo()">Use the demo</button>
+<button id="finder" onclick="dataFind()">Box to DataTable</button>
+<button id="out" onclick="dataOutput()">DataTable To Chart</button>
+<button id="creator" onclick="createRow()">create a row</button>
+<button id="demo" onclick="createColl()">create a collum</button>
+
+<button id="demo" onclick="UseDemo()">paste demo set</button>
 </div>
+<table contenteditable="true" id="table" >
+
+  <div style="position:absolute;  height: 100px; width: 100px ;
+  top: 55%; left: 15%; border: 1px solid black;"><input type="text" name="data" id="data" style="height: 100px; width: 100px;">
+  <label for="data">save Box, copy this string to save your graph</label></div>
+
+
+  <label style="position: absolute;top: 55%; right: 15%;" for="color coder">functionality</label></div>
+  <div style="position: absolute; justify-content: center; height: 200px; width: 100px ;
+  top: 60%; right: 15%;"> 
+
+  <button name="color coder" onclick="ColorCode()">Color code</button>
+  <!--<button id="Shift organize" onclick="shiftRun()">Highlight best Choice</button>/!-->
+  <button id="quip" onclick="quip()">long Term Ideas</button>
+  
+</table>
+<p id="qoute" style="text-align: center;">advice:</p>
+<p id="s" style="text-align: center;">to start, create a few rows and filling out the table from 0-5</p>
+<h2 id="start" style="text-align: center;"><strong>email writer</strong></h1>
+
+</div>
+
+
+<form id="post" name="post" method="post">
+  <textarea id="mytextarea">Hello, I would like to say, </textarea>
+</form><label style="top: 150%;" for="post">
+<button  id="ideaGen">Generate an email idea</button></label>
 </body>
 <script src="index.js"></script>
 </html>
+
+
+
+

@@ -1,30 +1,25 @@
-const { app, BrowserWindow } = require('electron/main')
-const path = require('node:path')
+const { app, BrowserWindow, ipcMain } = require('electron');
 
-function createWindow () {
-  const win = new BrowserWindow({
-    width: 800,
-    height: 600,
+// Keep a global reference to the window object to prevent garbage collection
+let mainWindow;
+
+function createWindow() {
+  mainWindow = new BrowserWindow({
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
-    }
-  })
+      devTools: false
+  }
+ 
+  });
+  mainWindow.loadFile('index.html'); // Load your app's main HTML file
 
-  win.loadFile('index.html')
+  mainWindow.webContents.openDevTools(); // Optional: Open developer tools
 }
 
-app.whenReady().then(() => {
-  createWindow()
+app.on('ready', createWindow);
 
-  app.on('activate', () => {
-    if (BrowserWindow.getAllWindows().length === 0) {
-      createWindow()
-    }
-  })
-})
+// Handle IPC messages from the renderer process
+ipcMain.on('open-external', (event, url) => {
+  require('electron').shell.openExternal(url);
+});
 
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit()
-  }
-})
+// Other app lifecycle events and IPC handler
